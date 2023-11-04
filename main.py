@@ -14,7 +14,7 @@ app = Flask(__name__)
 def predict_sentiment():
     data = request.get_json(force=True)
     text = data['text']
-    return jsonify({"dfg":"sgsed"})
+    return jsonify({"fdfg":"sgsed"})
     # Convert new texts to sequences using the loaded tokenizer
     new_sequences = tokenizer.texts_to_sequences([text])
 
