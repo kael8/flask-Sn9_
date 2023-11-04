@@ -4,9 +4,10 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/sample_response')
+@app.route('/predict_sentiment', methods=['GET'])
 def sample_response():
-    response_data = {'message': 'This is a sample response 2', 'status': 'OK'}
+    mess = request.id
+    response_data = {'message': 'This is a sample response 2', 'status': mess}
     return jsonify(response_data)
 
 
