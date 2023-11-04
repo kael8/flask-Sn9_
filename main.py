@@ -7,7 +7,9 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 app = Flask(__name)
-
+@app.route('/')
+def index():
+    return jsonify({"wregwsfnj": "rfhirtm"})
 # Load and merge the partitioned tokenizer states
 tokenizer_state_filenames = [
     'C:/Users/Llesis/Desktop/train/tokenizer_parts/tokenizer_state_part0.pkl',
