@@ -4,9 +4,10 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/predict_sentiment', methods=['POST'])
-def predict_sentiment():
-    return jsonify({'error': 'rgyryhtturtu'}), 500  # 500 is the HTTP status code for Internal Server Error
+@app.route('/sample_response', methods=['GET'])
+def sample_response():
+    response_data = {'message': 'This is a sample response', 'status': 'OK'}
+    return jsonify(response_data)
 
 
 if __name__ == '__main__':
