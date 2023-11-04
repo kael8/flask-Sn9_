@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 
-app = Flask(__name)
+app = Flask(__name__)
 @app.route('/')
 def index():
     return jsonify({"wregwsfnj": "rfhirtm"})
