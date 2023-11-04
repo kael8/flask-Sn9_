@@ -12,8 +12,8 @@ def index():
     return jsonify({"wregwsfnj": "rfhirtm"})
 # Load and merge the partitioned tokenizer states
 tokenizer_state_filenames = [
-    'C:/Users/Llesis/Desktop/train/tokenizer_parts/tokenizer_state_part0.pkl',
-    'C:/Users/Llesis/Desktop/train/tokenizer_parts/tokenizer_state_part1.pkl'
+    'model/tokenizer_state_part0.pkl',
+    'model/tokenizer_state_part1.pkl'
 ]
 
 # Initialize an empty tokenizer
@@ -40,7 +40,7 @@ for part_filename in tokenizer_state_filenames:
 tokenizer.num_words = 10000
 
 # Load the trained model
-model_filename = 'C:/Users/Llesis/Desktop/python/sentiment_analysis_model.h5'
+model_filename = 'model/sentiment_analysis_model.h5'
 model = load_model(model_filename)
 
 # Manually inserted text for sentiment analysis
