@@ -5,14 +5,13 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
-import os
 
-app = Flask(__name__)
+app = Flask(__name)
 
 # Load and merge the partitioned tokenizer states
 tokenizer_state_filenames = [
-    'model/tokenizer_state_part0.pkl',
-    'model/tokenizer_state_part1.pkl'
+    'C:/Users/Llesis/Desktop/train/tokenizer_parts/tokenizer_state_part0.pkl',
+    'C:/Users/Llesis/Desktop/train/tokenizer_parts/tokenizer_state_part1.pkl'
 ]
 
 # Initialize an empty tokenizer
@@ -39,34 +38,33 @@ for part_filename in tokenizer_state_filenames:
 tokenizer.num_words = 10000
 
 # Load the trained model
-model_filename = 'model/sentiment_analysis_model.h5'
+model_filename = 'C:/Users/Llesis/Desktop/python/sentiment_analysis_model.h5'
 model = load_model(model_filename)
 
-# API endpoint to predict sentiment
-@app.route('/predict_sentiment', methods=['POST'])
-def predict_sentiment():
-    data = request.get_json(force=True)
-    text = data['text']
+# Manually inserted text for sentiment analysis
+manually_inserted_text = "This is a great product. I love it!"
 
-    # Convert new texts to sequences using the loaded tokenizer
-    new_sequences = tokenizer.texts_to_sequences([text])
+# Convert new texts to sequences using the loaded tokenizer
+new_sequences = tokenizer.texts_to_sequences([manually_inserted_text])
 
-    # Map out-of-vocabulary words to a special token
-    for i, seq in enumerate(new_sequences):
-        new_sequences[i] = [token if 1 <= token <= tokenizer.num_words else 1 for token in seq]
+# Map out-of-vocabulary words to a special token
+for i, seq in enumerate(new_sequences):
+    new_sequences[i] = [token if 1 <= token <= tokenizer.num_words else 1 for token in seq]
 
-    max_sequence_length = 100
+max_sequence_length = 100
 
-    # Pad sequences to have a consistent length
-    new_X = pad_sequences(new_sequences, maxlen=max_sequence_length)
+# Pad sequences to have a consistent length
+new_X = pad_sequences(new_sequences, maxlen=max_sequence_length)
 
-    # Predict using the loaded model
-    predictions = model.predict(new_X)
+# Predict using the loaded model
+predictions = model.predict(new_X)
 
-    # Determine sentiment based on the prediction
-    sentiment = "Positive" if predictions[0][0] >= 0.5 else "Negative"
-    
-    return jsonify({'text': text, 'predicted_sentiment': sentiment, 'prediction_score': float(predictions[0][0])})
+# Determine sentiment based on the prediction
+sentiment = "Positive" if predictions[0][0] >= 0.5 else "Negative"
+
+print(f'Manually Inserted Text: {manually_inserted_text}')
+print(f'Predicted Sentiment: {sentiment}')
+print(f'Prediction Score: {float(predictions[0][0])}')
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
