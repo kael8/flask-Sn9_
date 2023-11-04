@@ -3,9 +3,10 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
+@app.route('/sample_response', methods=['GET'])
+def sample_response():
+    response_data = {'message': 'This is a sample response', 'status': 'OK'}
+    return jsonify(response_data)
 
 
 
