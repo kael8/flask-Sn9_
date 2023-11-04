@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/predict_sentiment', methods=['POST'])
+@app.route('/')
 def predict_sentiment():
     return jsonify({'error': 'esrtt'}), 500  # 500 is the HTTP status code for Internal Server Error
 
