@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/sample_response')
 def sample_response():
-    response_data = {'message': 'This is a sample response', 'status': 'OK'}
+    response_data = {'message': 'This is a sample response 2', 'status': 'OK'}
     return jsonify(response_data)
 
 
