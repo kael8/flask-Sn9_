@@ -6,7 +6,7 @@ app = Flask(__name__)
 def predict_sentiment():
     text = request.json['text']
     # Perform sentiment analysis here
-    sentiment = "Positive"  # This should be replaced with actual sentiment analysis result
+    sentiment = text  # This should be replaced with actual sentiment analysis result
     return jsonify({'sentiment': sentiment})
 
 if __name__ == '__main__':
