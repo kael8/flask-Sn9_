@@ -7,11 +7,10 @@ app = Flask(__name__)
 # API endpoint to predict sentiment
 @app.route('/predict_sentiment', methods=['POST'])
 def predict_sentiment():
-    data = request.get_json(force=True)
-    text = data['text']
+
 
     
-    return jsonify({'text': text)})
+    return jsonify({'text': 'connected')})
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
