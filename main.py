@@ -1,16 +1,12 @@
 from flask import Flask, jsonify
-import os
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-# API endpoint to predict sentiment
 @app.route('/predict_sentiment', methods=['POST'])
-def predict_sentiment():
-
-
-    
-    return jsonify({'text': 'connected')})
+def index():
+    return jsonify({'text': 'Working!!!'})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(debug=True)
