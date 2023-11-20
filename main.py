@@ -6,10 +6,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 
-# Install required dependencies
-subprocess.run(['pip', 'install', 'numpy'])
+
 
 app = Flask(__name__)
+
+# Install required dependencies
+subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
 
 # Load and merge the partitioned tokenizer states
 tokenizer_state_filenames = [
