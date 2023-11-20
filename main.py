@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
 import pickle
 import numpy as np
-import tensorflow as tf
+import subprocess  # Import subprocess module for running shell commands
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
+
+# Install required dependencies
+subprocess.run(['pip', 'install', 'numpy'])
 
 app = Flask(__name__)
 
