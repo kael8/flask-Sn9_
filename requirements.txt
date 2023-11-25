@@ -1,4 +1,3 @@
-pip install protobuf==3.20.0
-pip install Flask
-pip install numpy
-pip install tensorflow
+Flask
+numpy
+tensorflow
